@@ -4,7 +4,7 @@
 
 #### TL;DR:
 
-There are two compenents: _agent_ and _environment_ each having its own state
+There are two components: _agent_ and _environment_ each having its own state
 
 Agent receives some _observation_ and _reward_ at each step based on which it takes _action_
 
@@ -37,7 +37,7 @@ _model_: agent's representation of environment
 
 - A reward is a **scalar** feedback signal
 
-- it indicates how an agent doing at a given time
+- it indicates how an agent is doing at a given time
 
 - the job is to maximise cumulative reward
 
@@ -47,7 +47,7 @@ _model_: agent's representation of environment
 
   _What happens If there is no intermediate rewards?_
 
-  we define an end of episode and we define a reward at the end of the episode, sum of the reqard is how well he does at the end of the episode and goal is to take actions to maximise the cumulative reward at the end
+  we define an end of episode and we define a reward at the end of the episode, sum of the reward is how well he does at the end of the episode and goal is to take actions to maximise the cumulative reward at the end
 
   _What if the goal is time based like we want something to be done in shortest amount of time?_
 
@@ -73,15 +73,19 @@ _An example of agent and environment in atari game_
 
 
 
+
+
 - what happens next depends on history
 
   - agent selects action
-  - enverment selects observations / rewards 
+  - environment selects observations / rewards 
 
 - State is the summary of historic information used to determine what happens next
   $$
   S_t = f(H_t)
   $$
+
+
 
 
 ### Environment State
@@ -184,6 +188,8 @@ _An example of agent and environment in atari game_
   $$
 
 
+
+
 ### Value Function
 
 - prediction of expected future reward
@@ -213,6 +219,8 @@ _An example of agent and environment in atari game_
     - $$
       R_{ss^{'}}^a = Prob[R | S=s,A=a]
       $$
+
+
 
 
 ### Categorizing RL Agents
