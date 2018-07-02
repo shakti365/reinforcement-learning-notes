@@ -44,29 +44,38 @@ class PolicyIteration:
     def policy_improvement(self, discount=1.0):
         """Improves the current policy by acting greedily over value functions"""
 
+        # Initialize current policy as stable.
         policy_stable = True
 
+        # Iterate over all the states in state space.
         for state in self.environment.state_space:
 
+            # Save old action according to the policy for later comparison.
             old_action = np.argmax(self.policy[state])
 
+            # Initialize an empty list to store action value fucntion.
             action_value = []
 
+            # Iterate over all possible actions from current state.
             for action_idx, action in enumerate(self.environment.action_space):
                 
+                # Perform action in the environment and observe reward and next state.
                 reward, next_state = self.environment.step(action=action, state=state)
 
+                # Calculate action value function for each action from current state.
                 action_value.append((reward + (discount * self.v[next_state])))
 
+            # Select best action from updated policy.
             best_action = np.argmax(action_value)
 
+            # Check if past best action is same as the current one, 
+            # If it is not then consider current policy as unstable.
             if old_action != best_action:
                 policy_stable = False
             
+            # Update the policy.
             new_policy = np.zeros(self.environment.num_actions)
-
             new_policy[best_action] = 1.0
-
             self.policy[state] = new_policy
         
         return policy_stable
@@ -89,6 +98,7 @@ class PolicyIteration:
             # Call policy improvement.
             policy_stable = self.policy_improvement(discount)
 
+            # If current policy is stable then stop execution else keep doing evaluation and improvement.
             if policy_stable:
                 break
 
@@ -102,5 +112,5 @@ class PolicyIteration:
                 break
 
 if __name__=="__main__":
-    pe = PolicyIteration()
-    pe.run()
+    pi = PolicyIteration()
+    pi.run()
