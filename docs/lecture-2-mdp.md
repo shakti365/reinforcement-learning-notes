@@ -141,6 +141,7 @@ $$
 
 
 
+
 ### Solving the Bellman Equation
 
 - linear equation; can be solved directly
@@ -194,6 +195,7 @@ $<S,A,P,R, \gamma>$
 
 
 
+
 ### MP and MRP can be recovered from a MDP
 
 - Markov Decision Process $<S,P,R,\gamma,A; \pi>$: A sequence of state, transition probabilities, discounted reward and Actions taken under a policy $\pi$
@@ -209,7 +211,6 @@ $<S,A,P,R, \gamma>$
   R_{s,s'}^{\pi} = \sum_{a \in A} \pi(A|s)R_{ss'}^a
   $$
 
-  
 
 ### Value Function
 
@@ -236,6 +237,7 @@ According to bellman equation state value function can be decomposed into two pa
   $$
   v_\pi(s) = E_\pi[R_{t+1}+\gamma v_\pi(s_{t+1})|S_t=s]
   $$
+
 
 
 
@@ -273,10 +275,12 @@ TODO: Add combination of both the equations
 
 
 
+
 - optimal action-value function $q_\pi(s,a)$ is the max value function over all policies.
   $$
   q_*(s,a) = max ( q_\pi(s,a))
   $$
+
 
 ### Optimal Policy
 
