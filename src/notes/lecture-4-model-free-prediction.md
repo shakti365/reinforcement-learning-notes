@@ -159,3 +159,28 @@ $$
 
 
 
+### Certainty Equivalence:
+
+- MC converges to solution with minimum mean squared error
+
+  - solution that best fits to the observed returns
+  - does not exploit markov property - more suited for non-markov processes
+
+  $$
+  \sum_{k=1}^{k}\sum_{t=1}^{T_k}(g_t^k - V(s_t^k))^2
+  $$
+  where, $k$ is an episode and $t$ is a time-step
+
+- TD(0) converges to the solution of maximum likelihood Markov Model
+
+  - solution to the MDP that best fits the data
+  - It tries to approximate the transition probability by just counting transitions based on transition probability
+
+  - exploits markov property: builds a markov model with the data and solves for it
+    $$
+    \hat{P}_{s,s'}^a = \frac{1}{N(s,a)}\sum\sum1(s_t^k, a_t^k, s_{t+1}^k = s, a, s')
+    $$
+
+    $$
+    \hat{R}_{s,s'}^a = \frac{1}{N(s,a)}\sum\sum1(s_t^k, a_t^k = s, a) r_t^k
+    $$
